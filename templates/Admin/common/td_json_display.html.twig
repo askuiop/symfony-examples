@@ -4,8 +4,8 @@
     {% endif %}
 
 {% extends exAction == 'show'
-? 'SonataAdminBundle:CRUD:base_show_field.html.twig'
-: 'SonataAdminBundle:CRUD:base_list_field.html.twig'
+? '@SonataAdmin/CRUD/base_show_field.html.twig'
+: '@SonataAdmin/CRUD/base_list_field.html.twig'
 %}
 
 {% block field%}

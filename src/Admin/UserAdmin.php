@@ -40,8 +40,8 @@ final class UserAdmin extends AbstractAdmin
             ->add('roles', null, [
                 'template' => 'Admin/common/td_array_display.html.twig'
             ])
-            ->add('xx', 'url', [
-                'url' => 'http://example.com',
+            ->add('custom_field', 'url', [
+                'url' => 'http://example.com',  //don't work
                 //'route' => [
                 //    'name' => 'admin.top',
                 //    'absolute' => true,

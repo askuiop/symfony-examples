@@ -14,14 +14,11 @@
         {% set maxWidth = field_description.options.ex_max_width %}
     {% endif %}
 
-    {% set field = field_description.name  %}
-
     <div style="max-width: {{ maxWidth }};word-wrap: break-word;">
         <span>
-            {{ dump(value) }}
-            {#{% for key, val in value | json_decode %}
-                <p style="border: dashed 1px #ccc;padding: 0 6px;margin: 0 0 3px;font-size: 12px;">{{ val }}</p>
-            {% endfor %}#}
+            {% for key, val in value  %}
+                <p>{{ val }}</p>
+            {% endfor %}
         </span>
     </div>
 {% endblock %}
