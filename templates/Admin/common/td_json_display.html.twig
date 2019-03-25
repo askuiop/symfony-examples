@@ -1,0 +1,30 @@
+{% set exAction='list' %}
+    {% if field_description.options.ex_action is defined %}
+        {% set exAction = field_description.options.ex_action %}
+    {% endif %}
+
+{% extends exAction == 'show'
+? 'SonataAdminBundle:CRUD:base_show_field.html.twig'
+: 'SonataAdminBundle:CRUD:base_list_field.html.twig'
+%}
+
+{% block field%}
+    {% set maxWidth="300px" %}
+    {% if field_description.options.ex_max_width is defined %}
+        {% set maxWidth = field_description.options.ex_max_width %}
+    {% endif %}
+
+    {% set field = field_description.name  %}
+
+    {% set data_decoded = attribute(object, field) | json_decode(true)  %}
+
+    <div style="max-width: {{ maxWidth }};word-wrap: break-word;">
+        <span>
+            {% for key, value in data_decoded %}
+                {% set key= key is empty ? "未知" : key %}
+                <p  style="font-size: 12px;border: dashed 1px #ccc;padding: 0px 5px;line-height: 20px;margin: 0 0 4px;">{{ key  }} : {{ value }}</p>
+            {% endfor %}
+        </span>
+
+    </div>
+{% endblock %}

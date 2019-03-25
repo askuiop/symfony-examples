@@ -1,0 +1,77 @@
+sonata_block:
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+
+sonata_admin:
+    title:  通用后台计划
+    title_logo: logo.png
+    options:
+        html5_validate:       false
+        #form_type:            standard
+        #form_type:            horizontal
+        title_mode:           "single_text"
+    security:
+        handler: sonata.admin.security.handler.role
+        #handler: sonata.admin.security.handler.acl
+        acl_user_manager: user.repo
+
+        role_admin: ROLE_ADMIN
+        role_super_admin: ROLE_SUPER_ADMIN
+
+        # acl security information
+        information:
+            GUEST:    [VIEW, LIST]
+            STAFF:    [EDIT, LIST, CREATE]
+            EDITOR:   [OPERATOR, EXPORT]
+            ADMIN:    [MASTER]
+
+        # permissions not related to an object instance and also to be available when objects do not exist
+        # the DELETE admin permission means the user is allowed to batch delete objects
+        admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT, OPERATOR, MASTER]
+
+        # permission related to the objects
+        object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, MASTER, OWNER]
+
+    dashboard:
+        blocks:
+            - { type: sonata.admin.block.admin_list, position: left }
+
+        groups:
+            group_dashboard:
+                label: On top page
+                on_top: true
+                icon: '<i class="fa  fa-bandcamp"></i>'
+                items:
+                    - route: admin.top
+                      label: Top Page
+            group_user:
+                label: User Management
+                icon: '<i class="fa  fa-users"></i>'
+                items:
+                    - admin.user
+            group_post:
+                label: User Posts
+                icon: '<i class="fa  fa-newspaper-o"></i>'
+                items:
+                    - admin.post
+
+    assets:
+        stylesheets:
+            # The default stylesheet list:
+            - bundles/sonatacore/vendor/bootstrap/dist/css/bootstrap.min.css
+            - bundles/sonatacore/vendor/components-font-awesome/css/font-awesome.min.css
+            - bundles/sonatacore/vendor/ionicons/css/ionicons.min.css
+            #- bundles/sonataadmin/vendor/admin-lte/dist/css/AdminLTE.min.css
+            - css/modified/AdminLTE.min.css
+            - bundles/sonataadmin/vendor/admin-lte/dist/css/skins/skin-black.min.css
+            - bundles/sonataadmin/vendor/iCheck/skins/square/blue.css
+            - bundles/sonatacore/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css
+            - bundles/sonataadmin/vendor/jqueryui/themes/base/jquery-ui.css
+            - bundles/sonatacore/vendor/select2/select2.css
+            - bundles/sonatacore/vendor/select2-bootstrap-css/select2-bootstrap.min.css
+            - bundles/sonataadmin/vendor/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css
+            - bundles/sonataadmin/css/styles.css
+            - bundles/sonataadmin/css/layout.css
+            - bundles/sonataadmin/css/tree.css
+            - bundles/sonataadmin/css/colors.css

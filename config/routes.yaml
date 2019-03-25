@@ -1,0 +1,18 @@
+# This file is the entry point to configure your own HTTP routes.
+# Files in the routes/ subdirectory configure the routes for your dependencies.
+
+#index:
+#    path: /
+#    defaults: { _controller: 'App\Controller\DefaultController::index' }
+
+app_login:
+    path: /login
+    defaults: { _controller: 'App\Controller\SecurityController::login' }
+app_logout:
+    path: /logout
+    defaults: { _controller: 'App\Controller\SecurityController::logout' }
+
+
+admin.top:
+    path: /admin/top
+    defaults: { _controller: 'App\Controller\AppController::top' }

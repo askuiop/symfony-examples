@@ -1,0 +1,27 @@
+{% set exAction='list' %}
+    {% if field_description.options.ex_action is defined %}
+        {% set exAction = field_description.options.ex_action %}
+    {% endif %}
+
+{% extends exAction == 'show'
+    ? '@SonataAdmin/CRUD/base_show_field.html.twig'
+    : '@SonataAdmin/CRUD/base_list_field.html.twig'
+%}
+
+{% block field %}
+    {% set maxWidth="300px" %}
+    {% if field_description.options.ex_max_width is defined %}
+        {% set maxWidth = field_description.options.ex_max_width %}
+    {% endif %}
+
+    {% set field = field_description.name  %}
+
+    <div style="max-width: {{ maxWidth }};word-wrap: break-word;">
+        <span>
+            {{ dump(value) }}
+            {#{% for key, val in value | json_decode %}
+                <p style="border: dashed 1px #ccc;padding: 0 6px;margin: 0 0 3px;font-size: 12px;">{{ val }}</p>
+            {% endfor %}#}
+        </span>
+    </div>
+{% endblock %}
