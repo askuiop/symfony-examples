@@ -13,3 +13,11 @@ framework:
     #fragments: true
     php_errors:
         log: true
+
+jims_editor_hub:
+    ueditor:
+        config_file: ~       #ueditor 的 配置文件的 默认文件： "bundle路径"+Resources/config/config.json
+    umeditor:
+        save_path:    "upload/umeditor/"                                  #存储文件夹
+        max_size:     2000                                                #允许的文件最大尺寸，单位KB
+        allow_files:  [ ".gif" , ".png" , ".jpg" , ".jpeg" , ".bmp" ]     #允许的文件格式

@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Admin;
 
 use App\Entity\Post;
+use Jims\EditorHubBundle\Form\UeditorType;
+use Jims\EditorHubBundle\Form\UmeditorType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -47,7 +49,12 @@ final class PostAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('title')
-            ->add('content')
+            ->add('content', UmeditorType::class, [
+                "attr" => [
+                    "style" => "width:800px;",
+                    "class"=>"jims",
+                ],
+            ])
             ;
 
         $formMapper->getFormBuilder()

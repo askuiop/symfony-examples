@@ -102,6 +102,9 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "jims/editor-hub-bundle": {
+        "version": "v2.0"
+    },
     "knplabs/knp-menu": {
         "version": "2.3.0"
     },
